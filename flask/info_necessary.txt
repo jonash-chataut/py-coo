@@ -1,0 +1,4 @@
+pip installed virtual env in the flask folder not in the main python folder 
+env named virtual env is created 
+installed:
+flask
