@@ -90,7 +90,7 @@
           <label for="desc" class="form-label">Description</label>
           <input type="text" class="form-control" name="desc" id="desc" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-dark">Submit</button>
       </form>
     </div>
 
@@ -103,6 +103,7 @@
             <th scope="col">Todo task</th>
             <th scope="col">Description</th>
             <th scope="col">Date</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -112,6 +113,20 @@
             <td>{{todo.title}}</td>
             <td>{{todo.desc}}</td>
             <td>{{todo.date_executed}}</td>
+            <td>
+              <a href="/delete/{{todo.sno}}"
+                type="button"
+                class="btn btn-outline-dark btn-sm mx-1"
+              >
+                Delete
+              </button>
+              <a href="/delete/{{todo.sno}}"
+                type="button"
+                class="btn btn-outline-dark btn-sm mx-1"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
