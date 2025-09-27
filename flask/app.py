@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -33,6 +33,19 @@ def products():
     alltodos = Todo.query.all()
     print(alltodos)
     return "The products are here"
+
+@app.route("/update")
+def update():
+    alltodos = Todo.query.all()
+    print(alltodos)
+    return "The products are here"
+
+@app.route("/delete/<int:sno>")
+def delete(sno):
+    todo_del = Todo.query.filter_by(sno=sno).first()
+    db.session.delete(todo_del)
+    db.session.commit()
+    return redirect("/")
 
 if __name__ == "__main__":
     # to create the database file 

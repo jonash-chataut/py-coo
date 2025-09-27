@@ -96,6 +96,12 @@
 
     <div class="container my-3">
       <h2>Your Todos</h2>
+      {% if alltodos|length == 0 %}
+        <div class="alert alert-danger" role="alert">
+          No records found <br>Add a todo</div>
+</div>
+      {% else %}
+        
       <table class="table">
         <thead>
           <tr>
@@ -114,11 +120,11 @@
             <td>{{todo.desc}}</td>
             <td>{{todo.date_executed}}</td>
             <td>
-              <a href="/delete/{{todo.sno}}"
+              <a href="/update/{{todo.sno}}"
                 type="button"
                 class="btn btn-outline-dark btn-sm mx-1"
               >
-                Delete
+                Edit
               </button>
               <a href="/delete/{{todo.sno}}"
                 type="button"
@@ -131,6 +137,7 @@
           {% endfor %}
         </tbody>
       </table>
+      {% endif %}
     </div>
 
     <script
