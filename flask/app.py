@@ -31,15 +31,26 @@ def hello_world():
 @app.route("/show")
 def products():
     alltodos = Todo.query.all()
-    print(alltodos)
     return "The products are here"
 
-@app.route("/update")
-def update():
-    alltodos = Todo.query.all()
-    print(alltodos)
-    return "The products are here"
+# edit the todo
+@app.route("/update/<int:sno>", methods=['GET', 'POST'])
+def update(sno):
+    if request.method == "POST":
+        title=request.form['title']
+        desc= request.form['desc']
+        todo_edit = Todo.query.filter_by(sno=sno).first()
+        todo_edit.title = title
+        todo_edit.desc = desc
+        db.session.add(todo_edit)
+        db.session.commit()
+        return redirect("/")
+    
+    todo_edit = Todo.query.filter_by(sno=sno).first()
+    return render_template("update.html", todo_edits = todo_edit)
 
+
+# delete the todo
 @app.route("/delete/<int:sno>")
 def delete(sno):
     todo_del = Todo.query.filter_by(sno=sno).first()
