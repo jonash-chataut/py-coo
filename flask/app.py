@@ -31,7 +31,7 @@ def hello_world():
 @app.route("/show")
 def products():
     alltodos = Todo.query.all()
-    return "The products are here"
+    return str(alltodos)
 
 # edit the todo
 @app.route("/update/<int:sno>", methods=['GET', 'POST'])
