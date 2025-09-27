@@ -28,9 +28,14 @@ def hello_world():
     alltodos = Todo.query.all()
     return render_template("index.html", alltodos=alltodos)
 
-@app.route("/products")
+@app.route("/show")
 def products():
+    alltodos = Todo.query.all()
+    print(alltodos)
     return "The products are here"
 
 if __name__ == "__main__":
+    # to create the database file 
+    # with app.app_context():
+    #     db.create_all() 
     app.run(debug=True,port=8000)
