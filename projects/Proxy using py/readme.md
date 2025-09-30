@@ -18,6 +18,9 @@ Note: the proxy server ary time to time so may not work if not then chnage the p
 </i>
 
 <h3>
+Website I used to get proxy ip and port: https://www.proxynova.com/proxy-server-list/
+</h3>
+<h3>
 You can also authenticate by adding the username and password:
 </h3>
 <p>
