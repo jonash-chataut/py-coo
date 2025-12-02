@@ -6,7 +6,7 @@ if image is None:
     print("Image is not found")
 else:
     print("Image found")
-    resized = cv2.resize(image,(300,300))
+    resized = cv2.resize(image,(300,300)) #width and height
     cv2.imshow("Original image",image)
     cv2.imshow("Resized image",resized)
     cv2.waitKey(0)
