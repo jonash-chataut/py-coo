@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("learnings\libraries learning\OpenCV\py_img.jpg")
+image = cv2.imread(r"learnings\libraries learning\OpenCV\basics\py_img.jpg")
 
 if image is not None:
     success = cv2.imwrite("Output_python.png",image)

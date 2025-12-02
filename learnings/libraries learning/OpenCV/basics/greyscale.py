@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("learnings\libraries learning\OpenCV\basics\py_img.jpg")
+image = cv2.imread(r"learnings\libraries learning\OpenCV\basics\py_img.jpg")
 
 if image is not None:
     gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
