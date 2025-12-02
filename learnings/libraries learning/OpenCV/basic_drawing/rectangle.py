@@ -6,8 +6,8 @@ if image is None:
     print("Could not load image")
 else:
     print("Img loaded successfully")
-    pt1=(100,100)
-    pt2=(800,450)
+    pt1=(100,100) #top left
+    pt2=(800,450) #bottom right
 
     color=(0,255,0) #bgr
     thickness=7
