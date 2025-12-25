@@ -18,6 +18,7 @@ class handDetector():
 )
 
         self.mpDraw=mp.solutions.drawing_utils
+        self.tipIds =[4,8,12,16,20]
 
     def findHands(self,img,draw=True):
         
@@ -32,21 +33,37 @@ class handDetector():
         return img    
     
     def findPosition(self,img,Nohands=0,draw=True):
-        lmlist=[]
+        self.lmlist=[]
         if self.results.multi_hand_landmarks:
             myhand=self.results.multi_hand_landmarks[Nohands]
               
             for id, lm in enumerate(myhand.landmark):
                 h,w,c=img.shape
                 cx,cy=int(lm.x*w),int(lm.y*h)
-                lmlist.append([id,cx,cy])
+                self.lmlist.append([id,cx,cy])
 
                 # print(id,cx,cy)
                 # to print any ids
                 # if id==0:
                 if draw:
                     cv2.circle(img,(cx,cy),10,(255,0,255),cv2.FILLED)
-        return lmlist
+        return self.lmlist
+    
+    def fingerUP(self):
+        fingers=[]
+        # just for right hands thumb in flipped cam
+        if self.lmlist[self.tipIds[0]][1]<self.lmlist[self.tipIds[0]-1][1]:
+                fingers.append(1)
+        else:
+            fingers.append(0)
+
+
+        for id in range(1,5): #for 4 fingers except thumb
+            if self.lmlist[self.tipIds[id]][2]<self.lmlist[self.tipIds[id]-2][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+        return fingers
 
 
 def main():
